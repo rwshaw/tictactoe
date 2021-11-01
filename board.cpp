@@ -37,19 +37,19 @@ bool Board::play(char player, int row, int column) {
 }
 	
 void Board::checkWin(char player, int row, int column) {
-    // check for win state
-    // rows
+    // check for win state and if the board is full
+    // check rows (we only need to check the row or column that has been played)
     if (board[row][0] == board[row][1] && board[row][2] == board[row][1]) {
         std::cout << player << " wins!" << std::endl;
 
         this->gameState = false;
     }
-    //columns
+    // columns
     if (board[0][column] == board[1][column] && board[2][column] == board[1][column] ) {
         std::cout << player << " wins!" << std::endl;
         this->gameState = false;
     }
-    //diagonals
+    // diagonals (don't check if the middle is empty)
     if (board[1][1] != ' ') {
         if (board[0][0] == board[1][1] && board[2][2]  == board[1][1]) {
             std::cout << player << " wins!" << std::endl;
