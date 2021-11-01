@@ -12,6 +12,7 @@ Board::Board()
 }
 
 void Board::printBoard() {
+    // Board printer
     std::cout << "-------------" << std::endl;
     for(int i = 0; i < 3; i++) {
         std::cout << "|";
@@ -60,8 +61,8 @@ void Board::checkWin(char player, int row, int column) {
     }
     // check to see if the board is full
     bool freeSpace = false;
-    for (int i; i < 3; i++) {
-        for (int j; j < 3; j++) {
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
             if (this->board[i][j] == ' ') {
                 freeSpace = true;
             }

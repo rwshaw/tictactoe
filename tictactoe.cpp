@@ -15,12 +15,25 @@ int main()
         int column;
         bool played = false;
 
-        std::cout << player << "'s turn!" << std::endl << "Row: ";
+        std::cout << player << "'s turn!" << std::endl;
         // continue until successful play
         while (!played) {
-            std::cin >> row;
+            std::cout << "Row: ";
+            std::cin >> row;   
+            while (std::cin.fail() || row > 3 || row < 1) {
+                std::cout << "Error, please enter an row from 1 to 3:" << std::endl;
+                std::cin.clear();
+                std::cin.ignore(256,'\n');
+                std::cin >> row;    
+            }
             std::cout << "Column: ";
-            std::cin >> column;
+            std::cin >> column;  
+            while (std::cin.fail() || column > 3 || column < 1) {
+                std::cout << "Error, please enter a column from 1 to 3:" << std::endl;
+                std::cin.clear();
+                std::cin.ignore(256,'\n');
+                std::cin >> column;    
+            }
             played = board.play(player, row-1, column-1);
         }
         
