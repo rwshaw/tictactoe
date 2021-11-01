@@ -5,7 +5,7 @@
 int main()
 {
     std::cout << "Welcome to tic-tac-toe amigo!" << std::endl;
-    
+
     //print board
     Board board;
 
@@ -50,16 +50,4 @@ int main()
         board.printBoard();
 
     }
-
-    // board.printBoard();
-    // int pos[2] = {1,2};
-    // board.play('X', pos);
-    // board.printBoard();
-    // pos[0] = 2;
-    // board.play('X', pos);
-    // board.printBoard();
-    // pos[0] = 0;
-    // board.play('X', pos);
-    // board.printBoard();
-
 }
