@@ -3,11 +3,12 @@
 #pragma once
 	
 #include <string>
+#include <vector>
 
 class Board  
 {
 	private:
-		char board[3][3];
+		std::vector< std::vector < std::string > > board;
 	public:
 		Board();
 		bool play(char player, int row, int column);

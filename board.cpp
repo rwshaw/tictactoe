@@ -1,23 +1,27 @@
 #include <iostream>
+#include <vector>
 #include "board.hpp"  
 	
 Board::Board()
 {
-    for(int i = 0; i < 3; i++) {
-        for(int j = 0; j < 3; j++) {
-            board[i][j] = ' ';
-        }
-    }
+    board.resize(3, std::vector<std::string>(3));
     gameState = true;
 }
 
 void Board::printBoard() {
     // Board printer
+
     std::cout << "-------------" << std::endl;
-    for(int i = 0; i < 3; i++) {
+    for (const auto &row: this->board) {
         std::cout << "|";
-        for(int j = 0; j < 3; j++) {
-            std::cout << " " << this->board[i][j] << " |";
+        for (const auto &elem: row) {
+            std::cout << " ";
+            if (elem.empty()) {
+                std::cout << " ";
+            } else {
+                std::cout << elem;
+            }
+            std::cout << " |";
         }
         std::cout << std::endl;
     }
@@ -26,7 +30,7 @@ void Board::printBoard() {
 
 bool Board::play(char player, int row, int column) {
     // check if move is legal, return false if not
-    if (this->board[row][column] == ' ') {
+    if (this->board[row][column].compare(" ")) {
         this->board[row][column] = player;
         this->checkWin(player, row, column);
         return true;
@@ -50,7 +54,7 @@ void Board::checkWin(char player, int row, int column) {
         this->gameState = false;
     }
     // diagonals (don't check if the middle is empty)
-    if (board[1][1] != ' ') {
+    if (!board[1][1].compare(" ")) {
         if (board[0][0] == board[1][1] && board[2][2]  == board[1][1]) {
             std::cout << player << " wins!" << std::endl;
             this->gameState = false;
@@ -61,9 +65,9 @@ void Board::checkWin(char player, int row, int column) {
     }
     // check to see if the board is full
     bool freeSpace = false;
-    for (int i = 0; i < 3; i++) {
-        for (int j = 0; j < 3; j++) {
-            if (this->board[i][j] == ' ') {
+    for (const auto &row: this->board) {
+        for (const auto &elem: row) {
+            if (elem.empty()) {
                 freeSpace = true;
             }
         }

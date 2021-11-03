@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 #include "board.hpp"
 
 
@@ -48,6 +49,5 @@ int main()
         player = (player == 'X')? player = 'O' : player = 'X';
         // print board
         board.printBoard();
-
     }
 }
