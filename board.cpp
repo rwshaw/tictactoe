@@ -30,7 +30,7 @@ void Board::printBoard() {
 
 bool Board::play(char player, int row, int column) {
     // check if move is legal, return false if not
-    if (this->board[row][column].compare(" ")) {
+    if (this->board[row][column].empty()) {
         this->board[row][column] = player;
         this->checkWin(player, row, column);
         return true;
@@ -54,7 +54,7 @@ void Board::checkWin(char player, int row, int column) {
         this->gameState = false;
     }
     // diagonals (don't check if the middle is empty)
-    if (!board[1][1].compare(" ")) {
+    if (!board[1][1].empty()) {
         if (board[0][0] == board[1][1] && board[2][2]  == board[1][1]) {
             std::cout << player << " wins!" << std::endl;
             this->gameState = false;
